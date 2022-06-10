@@ -23,10 +23,12 @@ rollbar.log('Hello world!')
 
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./public/index.html"));
+  rollbar.log('someone just landed on the page')
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 app.get('/styles', (req, res) => {
+    
     res.sendFile(path.join(__dirname, "./public/index.css"))
 });
 
@@ -37,6 +39,7 @@ app.get('/js', (req, res) => {
 
 
 app.get('/api/robots', (req, res) => {
+    rollbar.log('someone wanted to see all the robots')
     try {
         res.status(200).send(botsArr)
     } catch (error) {
@@ -46,6 +49,7 @@ app.get('/api/robots', (req, res) => {
 })
 
 app.get('/api/robots/five', (req, res) => {
+    rollbar.log('someone clicked the draw button and is preparing for battle')
     try {
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
@@ -58,6 +62,7 @@ app.get('/api/robots/five', (req, res) => {
 })
 
 app.post('/api/duel', (req, res) => {
+    rollbar.log('someone just dueled to the death')
     try {
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
