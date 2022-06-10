@@ -23,12 +23,11 @@ rollbar.log('Hello world!')
 
 
 app.get("/", (req, res) => {
-  rollbar.log('someone just landed on the page')
+    rollbar.log('someone just landed on the page');
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 app.get('/styles', (req, res) => {
-    
     res.sendFile(path.join(__dirname, "./public/index.css"))
 });
 
